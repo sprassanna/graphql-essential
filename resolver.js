@@ -1,25 +1,34 @@
 class Friend {
-    constructor(id,{firstName,lastName,gender,language,email}){
+    constructor(id,{firstName,lastName,gender,age,language,email,contacts}){
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
+        this.age = age;
         this.language = language;
         this.email = email;
+        this.contacts = contacts;
     }
 } 
 
 const friendDataBase = {};
 
-const resolvers = {
-    getFriend: ( { id } )  => {
-        return new Friend(id,friendDataBase[id]);
+
+const friendDatabase = {};
+
+// resolver map
+export const resolvers = {
+    Query: {
+        getFriend: (root,{ id }) => {
+            return new Friend(id, friendDatabase[id]);
+        }
     },
-    createFriend: ({input}) => {
+    Mutation: {
+        createFriend: (root,{ input }) => {
             let id = require('crypto').randomBytes(10).toString('hex');
-            friendDataBase[id] = input;
-            return new Friend(id,input);    
-    }
+            friendDatabase[id] = input;
+            return new Friend(id, input);
+        },
+    },
 };
 
-export default resolvers;
