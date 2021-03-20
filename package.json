@@ -4,11 +4,16 @@
   "description": "Source code is in **Master**",
   "main": "index.js",
   "dependencies": {
+    "casual": "^1.6.2",
     "express": "^4.17.1",
     "express-graphql": "^0.12.0",
     "graphql": "^15.5.0",
     "graphql-tools": "^7.0.4",
-    "nodemon": "^2.0.7"
+    "lodash": "^4.17.21",
+    "mongoose": "^5.12.1",
+    "nodemon": "^2.0.7",
+    "sequelize": "^6.5.1",
+    "sqlite3": "^5.0.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
