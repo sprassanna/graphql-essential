@@ -1,5 +1,5 @@
 // Connect to Database
-import {mongoose} from 'mongoose'
+import mongoose from 'mongoose';
 import  Sequelize  from 'sequelize';
 import _ from 'lodash';
 import casual from 'casual';
@@ -7,7 +7,7 @@ import casual from 'casual';
 // Mongo Connection
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/friends',{
-    useMongoClient: true
+   
 });
 
 const friendsSchema = new mongoose.Schema({
@@ -47,23 +47,23 @@ const sequelize = new Sequelize('database',null,null,{
 });
 
 const Aliens = sequelize.define('aliens',{
-    firstName : { type: Sequelize.STRING},
-    lastName : { type: Sequelize.STRING},
-    planet : { type: Sequelize.STRING},
+    firstName: { type: Sequelize.STRING},
+    lastName: { type: Sequelize.STRING},
+    planet: { type: Sequelize.STRING},
 
 });
 
 
-Aliens.sync({ force: true}).then(() =>{
-     _.times(10, (i) => {
-         Aliens.create({ 
-                firstName: casual._first_name,
-                lastName : casual._last_name,
-                planet : casual._word,
+Aliens.sync({ force: true}).then(() => {
+    _.times(10, (i) => {
+        Aliens.create({ 
+               firstName: casual.first_name,
+               lastName : casual.last_name,
+               planet : casual.word,
 
-         });
-     });
+        });
+    });
 });
 
-export { Friends,Aliens};
+export { Friends};
 
