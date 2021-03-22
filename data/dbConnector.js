@@ -65,5 +65,5 @@ Aliens.sync({ force: true}).then(() => {
     });
 });
 
-export { Friends};
+export { Friends,Aliens };
 
